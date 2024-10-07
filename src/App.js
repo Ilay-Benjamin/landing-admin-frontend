@@ -9,7 +9,7 @@ import { sidebarConfig } from './config/app/UI/sidebar/sidebar.config';
 import { appDetails, appPages} from './config/app/app.config.js';
 
 
-
+//aedgt 
 
 const pagesArray = appPages.pages;
 

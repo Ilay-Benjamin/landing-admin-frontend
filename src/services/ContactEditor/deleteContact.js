@@ -1,16 +1,14 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, getDoc, updateDoc, query, where, getDocs } from 'firebase/firestore';
 import * as helper from './utils';
-
-
-
-const app = helper.app;
-const db = helper.db;
+import { establishConnection } from '../Firebase/connection';
 
 
 
 export async function deleteContact(departmentId, contactId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);

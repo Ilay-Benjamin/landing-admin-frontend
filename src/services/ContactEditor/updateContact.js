@@ -1,12 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, getDoc, updateDoc } from 'firebase/firestore';
-import * as helper from './utils';
+import { establishConnection } from '../Firebase/connection';
 
-const app = helper.app;
-const db = helper.db;
 
 export async function updateContact(departmentId, contactId, updatedContact) {
      try {
+      const app = await establishConnection();
+      const db = getFirestore(app);
        const departmentDocRef = doc(db, 'Contacts/Departments/departmentList', departmentId);
        const departmentSnapshot = await getDoc(departmentDocRef);
        const departmentData = departmentSnapshot.data();

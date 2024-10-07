@@ -1,18 +1,17 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, getDoc, updateDoc, query, where, getDocs } from 'firebase/firestore';
 import { databaseCollections } from '../config/global/global.config';
-
-
+import { establishConnection } from '../services/Firebase/connection';
 // Initialize Firebase app and Firestore
 
 
 
-const app = initializeApp(databaseCollections.configuration);
-const db = getFirestore(app);
 
 
 export async function saveNewContact(contactItem, departmentName) {
     try {
+        const app = await establishConnection();
+        const db = getFirestore(app);
         // Reference to the collection containing department documents
         const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
         
@@ -54,7 +53,7 @@ export async function saveNewContact(contactItem, departmentName) {
 
 
 export async function main() {
-     const app = initializeApp(databaseCollections.configuration);
+     const app = await establishConnection();
      const db = getFirestore(app);
      
      const colRef = collection(db, 'Contacts/Config/permissions');

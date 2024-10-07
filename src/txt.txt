@@ -6,7 +6,7 @@ import Home from './pages/Home/index.Home.js';
 import EmptyPage from './layouts/EmptyPage/EmptyPage';
 import Chapter from './components/Chapter';
 import { sidebarConfig } from './config/app/UI/sidebar/sidebar.config';
-f
+
 function App() {
   return (
     <div className="app">
@@ -20,7 +20,7 @@ function App() {
       </pre>
       </h3>        
       <br></br>
-      <
+      <pre>
           {JSON.stringify(sidebarConfig, undefined, 2)}
       </pre>
     </div>

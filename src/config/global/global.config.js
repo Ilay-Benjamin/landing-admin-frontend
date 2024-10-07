@@ -1,8 +1,8 @@
 import globalConfigJSON from './global.config.json';
 
+const decodedGlobalConfig = JSON.parse(JSON.stringify(globalConfigJSON));
 
-
-export const globalConfig = JSON.parse(JSON.stringify(globalConfigJSON));
+export const globalConfig = decodedGlobalConfig
 
 
 export const databaseEnvironment = {

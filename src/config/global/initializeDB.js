@@ -1,4 +1,4 @@
-import { databaseEnvironment } from './app.config.js';
+import { databaseEnvironment } from './global.config.js';
 
 
 export function loadDatabaseConfig(firebaseConfigurations, firebaseServiceAccount) {

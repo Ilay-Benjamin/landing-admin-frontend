@@ -1,15 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, getDoc, updateDoc, query, where, getDocs } from 'firebase/firestore';
-import * as helper from './utils';
+import { establishConnection } from '../Firebase/connection';
 
-
-
-const app = helper.app;
-const db = helper.db;
 
 
 export async function getAll() {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);          
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentSnapshot = await getDocs(departmentColRef);
           const departmentList = [];

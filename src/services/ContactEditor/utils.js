@@ -1,16 +1,15 @@
 import { databaseCollections } from '../../config/global/global.config';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, getDoc, updateDoc, query, where, getDocs } from 'firebase/firestore';
-
-
+import { establishConnection } from '../Firebase/connection';
 
 // Initialize Firebase app and Firestore
-export const app = initializeApp(databaseCollections.configuration);
-export const db = getFirestore(app);
 
 
 export async function getContactIndex(departmentId, contactId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -29,6 +28,8 @@ export async function getContactIndex(departmentId, contactId) {
 
 export async function getDepartmentId(departmentName) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentName);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -42,6 +43,8 @@ export async function getDepartmentId(departmentName) {
 
 export async function getDepartmentName(departmentId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -55,6 +58,8 @@ export async function getDepartmentName(departmentId) {
 
 export async function getContactId(departmentId, contactName) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -74,6 +79,8 @@ export async function getContactId(departmentId, contactName) {
 
 export async function getContactName(departmentId, contactId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -93,6 +100,8 @@ export async function getContactName(departmentId, contactId) {
 
 export async function isDepartmentNameTaken(departmentName) {
     try {
+        const app = await establishConnection();
+        const db = getFirestore(app);
         const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
         const departmentDocRef = doc(departmentColRef, departmentName);
         const departmentSnapshot = await getDoc(departmentDocRef);
@@ -105,6 +114,8 @@ export async function isDepartmentNameTaken(departmentName) {
 
 export async function isContactExists(departmentId, contactId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -123,6 +134,8 @@ export async function isContactExists(departmentId, contactId) {
 
 export async function isDepartmentExists(departmentId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -135,6 +148,8 @@ export async function isDepartmentExists(departmentId) {
 
 export async function isContactNameTaken(departmentId, contactName) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);
@@ -154,6 +169,8 @@ export async function isContactNameTaken(departmentId, contactName) {
 
 export async function isDepartmentEmpty(departmentId) {
      try {
+          const app = await establishConnection();
+          const db = getFirestore(app);
           const departmentColRef = collection(db, 'Contacts/Departments/departmentList');
           const departmentDocRef = doc(departmentColRef, departmentId);
           const departmentSnapshot = await getDoc(departmentDocRef);

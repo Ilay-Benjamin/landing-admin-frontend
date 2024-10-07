@@ -1,0 +1,90 @@
+
+.editor-board {
+     background-color: rgb(184, 134, 72);
+     width: 100%;
+     max-height: 250px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: start;
+     align-self: center;
+     padding: 0;
+     margin: 0;
+     border-radius: 18px;
+ }
+
+ .editor-board-header {
+     height: 35px;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-self: center;
+     align-items: center;
+     margin: 0;
+    padding: 0;
+    border-radius: 18px 18px 0 0 ;
+ }
+
+ .board-header-button {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    margin: 5px 35px;
+}
+
+.board-button-image {
+    width: 25px;
+    height: 25px;
+    object-fit: fill;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25%;
+}
+
+
+.editor-board-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 18px 18px;
+}
+
+.department-items {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    align-self: center;
+    margin: 0;
+    border-radius: 0 0 18px 18px;
+}
+
+
+.active-editor .editor-board-header {
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.active-editor .save-button,
+.active-editor .cancel-button {
+    display: flex;
+}
+
+.disabled-editor .editor-board-header {
+    justify-content: space-between;
+    display: flex;
+}
+
+.disabled-editor .save-button,
+.disabled-editor .cancel-button {
+    display: none;
+}

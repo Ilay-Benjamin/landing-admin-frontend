@@ -1,0 +1,157 @@
+:root {
+  --top-section-height: 8%;
+  --middle-section-height: 65%;
+  --footer-section-height: 10%;
+}
+
+
+/* components/Sidebar.css */
+.sidebar {
+  height: 100%;
+  width: 180px;
+  background-color: #071a2b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  padding: 0;
+}
+
+.open-sidebar {
+  display: flex;
+}
+
+.closed-sidebar {
+  display: none;
+}
+
+
+.section-chapter:nth-child(1 of div.section-chapter) {
+  border-radius: 15px 15px 0 0;
+}
+
+.section-chapter~.section-chapter {
+  border-radius: 0 0 0 0;
+}
+
+.section-chapter:last-of-type {
+  border-radius: 0 0 15px 15px;
+}
+
+.toggle-image {
+  width: 35px;
+  height: 35px;
+  object-fit: fill;
+}
+
+.sidebar-section {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  padding: 0 10px 0 10px;
+}
+
+.sidebar-top-section {
+  max-height: 120px;
+  height: var(--top-section-height);
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+
+}
+
+.sidebar-middle-section {
+  height: var(--middle-section-height);
+  justify-content: start;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+.sidebar-footer-section {
+  height: var(--footer-section-height - 1px);
+  color: gray;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.section-title {
+  width: 90%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.section-title-text {
+  color: #b8c6de;
+  font-size: 11px;
+  font-family: Roboto, "helvetica neue", sans-serif;
+  text-overflow: ellipsis;
+  transition: opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  letter-spacing: .25px;
+}
+
+.header-section-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.about-section-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.header-title-image {                                                                   
+  width: 35px;
+  height: 35px;
+  object-fit: fill;
+}
+
+.section-title-text {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.pages-title-text {
+  padding-left: 15px;
+}
+
+.about-title-text {
+  font-size: 10px;
+}
+
+.sidebar-close-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-self: end;
+  background-color: rgb(229, 190, 161);
+}
+
+.sidebar-open-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: start;
+  background-color: rgb(129, 92, 65);
+  margin: 10px;
+}

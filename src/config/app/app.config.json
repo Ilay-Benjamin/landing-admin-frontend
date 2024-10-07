@@ -1,0 +1,102 @@
+{
+    "name": "admin_panel_yoav",
+    "version": "1.0.0",
+    "port": 3074,
+    "domain": "http://admin-landing.hativatyoav.site",
+    "server": {
+        "url": "http://api-landing.hativatyoav.site"
+    },
+    "app": {
+        "details": {
+            "pages": [
+                {
+                    "name": "Home",
+                    "path": "/home",
+                    "route": "/",
+                    "component": "/pages/home/index.home.js"
+                },
+                {
+                    "name": "Error",
+                    "path": "/error",
+                    "route": "/",
+                    "component": "/pages/error/index.error.js"
+                },
+                {
+                    "name": "Contact",
+                    "path": "/assistance/contact",
+                    "route": "/assistance",
+                    "component": "/pages/assistance/contact/index.contact.js"
+                },
+                {
+                    "name": "Search",
+                    "path": "/assistance/search",
+                    "route": "/assistance",
+                    "component": "/pages/assistance/search/index.search.js"
+                },
+                {
+                    "name": "Help",
+                    "path": "/assistance/help",
+                    "route": "/assistance",
+                    "component": "/pages/assistance/help/index.help.js"
+                },
+                {
+                    "name": "Issue",
+                    "path": "/other/issue",
+                    "route": "/other",
+                    "component": "/pages/other/issue/index.issue.js"
+                },
+                {
+                    "name": "Settings",
+                    "path": "/other/settings",
+                    "route": "/other",
+                    "component": "/pages/other/settings/index.settings.js"
+                },
+                {
+                    "name": "BulletinEditor",
+                    "path": "/editors/bulletinEditor",
+                    "route": "/editors",
+                    "component": "/pages/editors/bulletineditor/index.bulletineditor.js"
+                },
+                {
+                    "name": "ContactEditor",
+                    "path": "/editors/contactEditor",
+                    "route": "/editors",
+                    "component": "/pages/editors/contacteditor/index.contacteditor.js"
+                },
+                {
+                    "name": "HoursEditor",
+                    "path": "/editors/hoursEditor",
+                    "route": "/editors",
+                    "component": "/pages/editors/hourseditor/index.hourseditor.js"
+                }
+            ]
+        },
+        "data": {
+            "users": [
+                {
+                    "id": 1,
+                    "fullname": "Ilay Benjamin",
+                    "rule": "Developer",
+                    "password": "1234"
+                },
+                {
+                    "id": 2,
+                    "fullname": "John Doe",
+                    "rule": "HR Manager",
+                    "password": "abcd"
+                }
+            ]
+        }
+    },
+    "description": {
+        "credits": {
+            "owner": [
+                {
+                    "name": "Ilay",
+                    "age": 21,
+                    "isMale": true
+                }
+            ]
+        }
+    }
+}

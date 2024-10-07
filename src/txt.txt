@@ -1,0 +1,99 @@
+import React from 'react';
+import './assets/css/App.css';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Home from './pages/Home/index.Home.js';
+import EmptyPage from './layouts/EmptyPage/EmptyPage';
+import Chapter from './components/Chapter';
+import { sidebarConfig } from './config/app/UI/sidebar/sidebar.config';
+f
+function App() {
+  return (
+    <div className="app">
+      <h3>
+      <pre>
+        {
+          JSON.stringify((
+              sidebarConfig.getSection('bottom-section').content
+            ), undefined, 2)
+        }
+      </pre>
+      </h3>        
+      <br></br>
+      <
+          {JSON.stringify(sidebarConfig, undefined, 2)}
+      </pre>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+class SidebarUtils {
+  static CompontentFactory = class {
+
+    static TYPES = {
+      SIDEBAR: 'sidebar',
+      SECTION: 'sidebar-section',
+      TITLE: 'section-title',
+      TITLE_TEXT: 'title-text',
+      TITLE_IMAGE: 'title-image',
+    } 
+
+    static CLASS_NAMES = {
+      SIDEBAR: 'sidebar',
+      CLOSE_SIDE: 'closed-sidebar',
+      OPEN_SIDE: 'opened-sidebar',
+      SECTION: 'sidebar-section',
+      TITLE: 'section-title',
+      TITLE_TEXT: 'title-text',
+      TITLE_IMAGE: 'title-image',
+    }
+
+    static hasOnlyStaticClassNames = (componentType) => {
+      var types = [
+        SidebarUtils.CompontentFactory.TYPES.SIDEBAR,
+      ]
+      return types.includes(componentType);
+    }
+
+    static assembleClassName = (componentType, className, componentName) => {
+      if (SidebarUtils.CompontentFactory.hasOnlyStaticClassNames(componentType)) {
+        return classNames(SidebarUtils.CLASS_NAMES.SIDEBAR);
+      }
+      return componentName + '-' + className
+    }
+
+    static generateClassNames = (componentType, componentName) => {
+      if (SidebarUtils.CompontentFactory.hasOnlyStaticClassNames(componentType)) {
+        return classNames(SidebarUtils.CLASS_NAMES.SIDEBAR);
+      }
+      return classNames(SidebarUtils.CLASS_NAMES.SECTION, componentName);
+    }
+
+    static STATIC_CLASS_NAMES = {
+      SECTION: 'sidebar-section',
+      TITLE: 'section-title',
+      TITLE_TEXT: 'title-text',
+      TITLE_IMAGE: 'title-image',
+    } 
+
+    static Compontent = (props) => {
+      const componentType = props.componentType;
+      const componentName = props.componentName;
+      const componentData = props.componentData;
+    
+      const staticClassNames = {
+        
+      } classNames(componentType, componentName);
+
+}

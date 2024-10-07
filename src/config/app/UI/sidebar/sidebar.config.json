@@ -1,0 +1,123 @@
+{
+    "sections": [
+        {
+            "sectionName": "top-section",
+            "sectionTitle": "",
+            "hasTitle": false,
+            "contentType": "image",
+            "content": "/assets/images/icons/admin-tool.png",
+            "moveTo": "/search"
+        },
+        {
+            "sectionName": "middle-section",
+            "sectionTitle": "Pages",
+            "hasTitle": true,
+            "contentType": "chapters",
+            "content": [
+                {
+                    "chapterName": "assistance",
+                    "chapterTitle": "Assistance",
+                    "chapterItems": [
+                        {
+                            "itemName": "search",
+                            "itemTitle": "Search",
+                            "itemIcon": "/assets/images/icons/search.png",
+                            "moveTo": "/assistance/search"
+                        },
+                        {
+                            "itemName": "contact",
+                            "itemTitle": "Contact",
+                            "itemIcon": "/assets/images/icons/email.png",
+                            "moveTo": "/assistance/contact"
+                        },
+                        {
+                            "itemName": "help",
+                            "itemTitle": "Help",
+                            "itemIcon": "/assets/images/icons/help.png",
+                            "moveTo": "/assistance/help"
+                        }
+                    ]
+                },
+                {
+                    "chapterName": "editors",
+                    "chapterTitle": "Editors",
+                    "chapterItems": [
+                        {
+                            "itemName": "hoursEditor",
+                            "itemTitle": "Hours",
+                            "itemIcon": "/assets/images/icons/clock.png",
+                            "moveTo": "/editors/hoursEditor"
+                        },
+                        {
+                            "itemName": "contactEditor",
+                            "itemTitle": "Contact",
+                            "itemIcon": "/assets/images/icons/clock.png",
+                            "moveTo": "/editors/contactEditor"
+                        },
+                        {
+                            "itemName": "bulletinEditor",
+                            "itemTitle": "Bulletin",
+                            "itemIcon": "/assets/images/icons/clock.png",
+                            "moveTo": "/editors/bulletinEditor"
+                        }
+                    ]
+                },
+                {
+                    "chapterName": "other",
+                    "chapterTitle": "Other",
+                    "chapterItems": [
+                        {
+                            "itemName": "settings",
+                            "itemTitle": "Settings",
+                            "itemIcon": "/assets/images/icons/settings.png",
+                            "moveTo": "/other/settings"
+                        },
+                        {
+                            "itemName": "issue",
+                            "itemTitle": "Issue",
+                            "itemIcon": "/assets/images/icons/issue.png",
+                            "moveTo": "/other/issue"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sectionName": "bottom-section",
+            "hasTitle": false,
+            "sectionTitle": "",
+            "contentType": "text",
+            "content": "@Ilay_Benjamin"
+        }
+    ],
+    "classNames": {
+        "section": {
+            "top": "top-section",
+            "middle": "middle-section",
+            "bottom": "bottom-section",
+            "sidebar": "sidebar-section",
+            "title": "section-title",
+            "title-image": "section-title-image"
+        },
+        "chapter": {
+            "chapter": "section-chapter",
+            "expanded": "expanded-chapter",
+            "shortened": "shortened-chapter",
+            "title": "chapter-title",
+            "title-image": "chapter-title-image",
+            "title-text": "chapter-title-text",
+            "items": "chapter-items",
+            "expand-button": "chapter-expand-button",
+            "expand-image": "expand-image",
+            "xcontent": "chapter-content"
+        },
+        "item": {
+            "item": "chapter-item",
+            "icon": "item-icon",
+            "icon-image": "item-icon-image",
+            "title": "item-title",
+            "title-image": "item-title-image",
+            "title-text": "item-title-text"
+        }
+    }
+}

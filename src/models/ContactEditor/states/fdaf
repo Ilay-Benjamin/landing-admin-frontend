@@ -1,0 +1,222 @@
+import Item from '../Item';
+import Department from '../Department';
+
+
+export default class StateModel {
+     static getEmptyState() {
+          var state =  new StateModel();
+          return state;
+     }
+     constructor() {
+          this._settings = {
+               isDisabled: true,
+               isLoaded: false,
+               isFocused: false
+          };
+          this._edit = {
+               toAppend: false,
+               hasChanges: false,
+               changes: null,
+               origin: {
+                    item: null,
+                    ids: {
+                         departmentId: "",
+                         itemId: ""
+                    }
+               }
+          };
+          this._focus = {
+               item: null,
+               ids: {
+                    departmentId: "",
+                    itemId: ""
+               },
+               indexes: {
+                    departmentIndex: -1,
+                    itemIndex: -1
+               }
+          }
+          this._data = {
+               departments: []
+          }
+     }
+     get settings() {
+          return this._settings;
+     }
+     set settings(value) {
+          try {
+               if (value === null || !(value instanceof Object)) {
+                    console.error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+               }
+               if (!value.hasOwnProperty("isDisabled") || !value.hasOwnProperty("isLoaded") || !value.hasOwnProperty("isFocused")) {
+                    console.error("Error! \nThe given value does not have the required properties: isDisabled, isLoaded, isFocused");
+               }
+               if (value.isDisabled === null || typeof value.isDisabled !== "boolean") {
+                    console.error("Error! \nThe given isDisabled is not a boolean, it is: " + typeof value.isDisabled);
+               }
+               if (value.isLoaded === null || typeof value.isLoaded !== "boolean") {
+                    console.error("Error! \nThe given isLoaded is not a boolean, it is: " + typeof value.isLoaded);
+               }
+               if (value.isFocused === null || typeof value.isFocused !== "boolean") {
+                    console.error("Error! \nThe given isFocused is not a boolean, it is: " + typeof value.isFocused);
+               }
+               this._settings = value;
+          } catch (e) {
+               console.error(e.message);
+          }
+     }
+     get edit() {
+          return this._edit;
+     }
+     set edit(value) {
+          try {
+               if (value === null || !(value instanceof Object)) {
+                    console.error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+               }
+               if (!value.hasOwnProperty("toAppend") || !value.hasOwnProperty("hasChanges") || !value.hasOwnProperty("changes") || !value.hasOwnProperty("origin")) {
+                    console.error("Error! \nThe given value does not have the required properties: toAppend, hasChanges, changes, origin");
+               }
+               if (value.origin === null || !(value.origin instanceof Object)) {
+                    console.error("Error! \nThe given origin is not an instance of Object, it is: " + typeof value.origin);
+               }
+               if (!value.origin.hasOwnProperty("item") || !value.origin.hasOwnProperty("ids")) {
+                    console.error("Error! \nThe given origin does not have the required properties: item, ids");
+               }
+               if (value.origin.item !== null && !(value.origin.item instanceof Item)) {
+                    console.error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value.origin.item);
+               }
+               if (value.origin.ids === null || !(value.origin.ids instanceof Object)) {
+                    console.error("Error! \nThe given ids is not an instance of Object (or null), it is: " + typeof value.origin.ids);
+               }
+               if (!value.origin.ids.hasOwnProperty("departmentId") || !value.origin.ids.hasOwnProperty("itemId")) {
+                    console.error("Error! \nThe given ids does not have the required properties: departmentId, itemId");
+               }
+               if (value.changes !== null && !(value.changes instanceof Item)) {
+                    console.error("Error! \nThe given changes is not an instance of Item (or null), it is: " + typeof value.changes);
+               }
+               if (value.toAppend === null || typeof value.toAppend !== "boolean") {
+                    console.error("Error! \nThe given toAppend is not a boolean, it is: " + typeof value.toAppend);
+               }
+               if (value.hasChanges === null || typeof value.hasChanges !== "boolean") {
+                    console.error("Error! \nThe given hasChanges is not a boolean, it is: " + typeof value.hasChanges);
+               }
+               this._edit = value;
+          } catch (e) {
+               console.error(e.message);
+          }
+     }
+     get focus() {
+          return this._focus;
+     }
+     set focus(value) {
+          try {
+               if (value === null || !(value instanceof Object)) {
+                    console.error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+               }
+               if (!value.hasOwnProperty("item") || !value.hasOwnProperty("ids") || !value.hasOwnProperty("indexes")) {
+                    console.error("Error! \nThe given value does not have the required properties: item, ids, indexes");
+               }
+               if (value.item !== null && !(value.item instanceof Item)) {
+                    console.error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value.item);
+               }
+               if (value.ids === null || !(value.ids instanceof Object)) {
+                    console.error("Error! \nThe given ids is not an instance of Object, it is: " + typeof value.ids);
+               }
+               if (!value.ids.hasOwnProperty("departmentId") || !value.ids.hasOwnProperty("itemId")) {
+                    console.error("Error! \nThe given ids does not have the required properties: departmentId, itemId");
+               }
+               if (value.indexes === null || !(value.indexes instanceof Object)) {
+                    console.error("Error! \nThe given indexes is not an instance of Object, it is: " + typeof value.indexes);
+               }
+               if (!value.indexes.hasOwnProperty("departmentIndex") || !value.indexes.hasOwnProperty("itemIndex")) {
+                    console.error("Error! \nThe given indexes does not have the required properties: departmentIndex, itemIndex");
+               }
+               if (value.indexes.departmentIndex === null || value.indexes.itemIndex === null) {
+                    console.error("Error! \nThe given indexes does not have the required properties: departmentIndex, itemIndex");
+               }
+               if (value.ids.departmentId === null || value.ids.itemId === null) {
+                    console.error("Error! \nThe given ids does not have the required properties: departmentId, itemId");
+               }
+               this._focus = value;
+          } catch (e) {
+               console.error(e.message);
+          }
+     }    
+     get data() {
+          return this._data;
+     }
+     set data(value) {
+          try {
+               if (value === null || !(value instanceof Object)) {
+                    console.error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+               }
+               if (!value.hasOwnProperty("departments")) {
+                    console.error("Error! \nThe given value does not have the required properties: departments");
+               }
+               if (value.departments === null || !(value.departments instanceof Array)) {
+                    console.error("Error! \nThe given departments is not an instance of Array, it is: " + typeof value.departments);
+               }
+               if (value.departments.some(department => !(department instanceof Department))) {
+                    console.error("Error! \nThe given array contains elements that are not instances of Department");
+               }
+               this._data = value;
+          } catch (e) {
+               console.error(e.message);
+          }
+     }
+     updateSettings(settings) {
+          this._settings = settings;
+     }
+     updateEdit(edit) {
+          this._edit = edit;
+     }
+     updateFocus(focus) {
+          this._focus = focus;
+     }
+     updateData(data) {
+          this._data = data;
+     }
+     clone(newState) {
+          this._settings.isDisabled = newState.settings.isDisabled;
+          this._settings.isLoaded = newState.settings.isLoaded;
+          this._settings.isFocused = newState.settings.isFocused;
+          this._edit.toAppend = newState.edit.toAppend;
+          this._edit.hasChanges = newState.edit.hasChanges;
+          this._edit.changes = newState.edit.changes;
+          this._edit.origin.item = newState.edit.origin.item;
+          this._edit.origin.ids.itemId = newState.edit.origin.ids.itemId;
+          this._edit.origin.ids.departmentId = newState.edit.origin.ids.departmentId;
+          this._focus.item = newState.focus.item;
+          this._focus.ids.itemId = newState.focus.ids.itemId;
+          this._focus.ids.departmentId = newState.focus.ids.departmentId;
+          this._focus.indexes.itemIndex = newState.focus.indexes.itemIndex;
+          this._focus.indexes.departmentIndex = newState.focus.indexes.departmentIndex;
+          this._data.departments = newState.data.departments;
+     }
+     equals(state) {
+          return JSON.stringify(this) === JSON.stringify(state);
+     }
+     isNull() {
+          return JSON.stringify(this) === JSON.stringify(StateModel.getEmptyState());
+     }
+     static CopyFrom(originalState, newState) {
+          originalState.settings.isDisabled = newState.settings.isDisabled;
+          originalState.settings.isLoaded = newState.settings.isLoaded;
+          originalState.settings.isFocused = newState.settings.isFocused;
+          originalState.edit.toAppend = newState.edit.toAppend;
+          originalState.edit.hasChanges = newState.edit.hasChanges;
+          originalState.edit.changes = newState.edit.changes;
+          originalState.edit.origin.item = newState.edit.origin.item;
+          originalState.edit.origin.ids.itemId = newState.edit.origin.ids.itemId;
+          originalState.edit.origin.ids.departmentId = newState.edit.origin.ids.departmentId;
+          originalState.focus.item = newState.focus.item;
+          originalState.focus.ids.itemId = newState.focus.ids.itemId;
+          originalState.focus.ids.departmentId = newState.focus.ids.departmentId;
+          originalState.focus.indexes.itemIndex = newState.focus.indexes.itemIndex;
+          originalState.focus.indexes.departmentIndex = newState.focus.indexes.departmentIndex;
+          originalState.data.departments = newState.data.departments;
+     }
+
+}
+
+

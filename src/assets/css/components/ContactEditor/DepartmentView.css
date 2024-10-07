@@ -1,0 +1,191 @@
+.dataview-department {
+     background-color: rgb(220, 195, 164);
+     width: 90%;
+     max-height: 380px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     align-self: center;
+     margin: 15px 0 15px 0;
+     padding: 0;
+     border-radius: 18px;
+}
+
+.dataview-department-header {
+     background-color: rgb(255, 140, 0);
+     min-height: 35px;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-self: center;
+     align-items: center;
+     margin: 0;
+     padding: 0;
+     border-radius: 18px 18px 0 0 ;
+}
+
+.department-header-title {
+     display: flex;
+     flex-direction: column;
+     justify-content: start;
+     align-self: center;
+     align-items: center;
+     text-align: center;
+     margin: 0;
+     padding: 0;
+}
+
+.department-header-title-text {
+     font-weight: bolder;
+     color: black;
+     font-size: 18px;
+     font-family: Roboto, "helvetica neue", sans-serif;
+     text-overflow: ellipsis;
+     transition: opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+     white-space: nowrap;
+     overflow: hidden;
+     cursor: pointer;
+     letter-spacing: .30px;
+     text-align: center;
+     margin: 0;
+     padding: 0;
+     text-shadow: 0 0 1px #ffffff;
+}
+
+.department-header-button {
+     border: none;
+     cursor: pointer;
+     display: flex;
+     justify-content: center;
+     align-self: center;
+     align-items: center;
+     margin: 0;
+}
+
+.department-button-image {
+     width: 23px;
+     height: 23px;
+     object-fit: fill;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+     border-radius: 25%;      
+}
+
+.department-content {
+     width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     align-self: center;
+     padding: 0;
+     border-radius: 0 0 18px 18px;
+}
+
+
+.department-items {
+    width: 100%;
+     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin: 0;
+     padding: 0;
+    border-radius: 0 0 18px 18px;
+}
+
+.department-item {
+     width: 100%;
+     max-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    align-items: center;
+    padding: 14px 0 14px 0;
+    margin: 0;
+}
+
+.department-item-header {
+     background-color: rgb(219, 168, 106);
+     height: 30px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-self: center;
+     align-items: center;
+     padding: 0;
+     margin: 0;
+}
+
+.department-item:nth-child(1 of div.department-item) {
+}
+   
+.department-item:last-of-type {
+}
+
+.department-item:nth-child(n of div.department-item):not(:last-of-type) {
+     border-bottom: 2px solid rgb(204, 164, 83);
+}
+
+.item-header-text {
+     max-width: 220px;
+     min-width: 150px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-self: center;
+     border: 1px solid rgb(219, 168, 106);
+     font-weight: bolder;
+     color: black;
+     font-size: 16px;
+     font-family: Roboto, "helvetica neue", sans-serif;
+     text-overflow: ellipsis;
+     transition: opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+     white-space: nowrap;
+     overflow: hidden;
+     cursor: pointer;
+     letter-spacing: .30px;
+     text-align: center;
+     margin: 0;
+     padding: 3px 4px 3px 4px;
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 15px 0 rgba(0,0,0,0.19);
+}
+
+.department-item-content {
+     height: 20px;
+     width: 95%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     align-self: center;
+     padding: 0;
+     margin: 0;
+}
+
+.item-content-text{
+     color: black;
+     font-size: 17px;
+     font-family: Roboto, "helvetica neue", sans-serif;
+     text-overflow: ellipsis;
+     transition: opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+     white-space: nowrap;
+     overflow: hidden;
+     cursor: pointer;
+     letter-spacing: .35px;
+     text-align: center;
+     margin: 0;
+     padding: 0;
+}
+
+.department-item-separator {
+     width: 95%;
+     height: 15px;
+     margin: 0;
+     padding: 0;
+}

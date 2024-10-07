@@ -1,0 +1,229 @@
+
+function isObject(variable) {
+    return variable !== null && typeof variable === 'object';
+}
+
+const store = (storage, value, key) => {
+    if (!storage) return;
+
+    if (isObject(value)) {
+        if (Array.isArray(value)) {
+            storeElementsArray(storage, value, key);
+        } else {
+            storeMap(storage, value);
+        }
+    } else {
+        storeElement(storage, value, key);
+    }
+}
+
+const storeMap = (storage, map) => {
+    if (isObject(map)) {
+        Object.entries(map).forEach(([mapKey, mapValue]) => {
+            storeElement(storage, mapValue, mapKey);
+        });
+    }
+}
+
+const storeElementsArray = (storage, array, propertyName) => {
+    array.forEach((element, index) => {
+        const key = isObject(element) && element[propertyName] ? element[propertyName] : `${propertyName}_${index}`;
+        storeElement(storage, element, key);
+    });
+}
+
+const storeElement = (storage, element, key) => {
+    if (isObject(element)) {
+        const newValue = { ...element };
+        storage[key] = newValue;
+    } else {
+        storage[key] = element;
+    }
+};
+
+const freezeMap = (map) => {
+    Object.entries(map).forEach(([key, value]) => {
+        if (isObject(value)) {
+            if (Array.isArray(value)) {
+                value.forEach((element) => {
+                    if (isObject(element)) {
+                        freezeMap(element);
+                    }
+                })
+            } else {
+                Object.entries(value).forEach(([key, value]) => {
+                    if (isObject(value)) {
+                        freezeMap(value);
+                    }
+                })
+            }
+            Object.freeze(value);
+        }
+    });
+}
+
+
+const loadSectionsMap = () => {
+    const sectionsMap = {};
+    sidebarConfigObject.sections.forEach((section) => {
+        store(sectionsMap, section, 'sectionName');
+    });
+};
+
+const loadChaptersMap = () => {
+    const chaptersMap = {};
+    sidebarConfigObject.sections.forEach((section) => {
+        if (section.content) {
+            var sectionName = section.sectionName;
+            section.content.forEach((chapter) => {
+                store(chaptersMap, chapter, 'chapterName');
+            });
+        }
+        ch
+    });
+    return chaptersMap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const loadItadgemsMap = () => {
+    const itemsMap = {};
+
+    sidebarConfigObject.sections.forEach((section) => {
+
+        if (section.content) {
+
+            var sectionName = section.sectionName;
+            var sectionContent = section.content;
+            var sectionObject = {};
+
+            if (section.contentType === 'chapters') {
+
+                section.content.forEach((chapter) => {
+
+                    var chapterName = chapter.chapterName;
+                    var chapterItems = chapter.chapterItems;
+                    var chapterObject = {}
+
+                    if (section.content) {
+
+                        chapter.chapterItems.forEach((item) => {
+
+                            var itemObject = {...item};
+                            Object.freeze(itemObject);
+                            chapterObject[itemObject.name] = itemObject;
+
+                        });
+
+                        Object.freeze(chapterObject);
+                        sectionObject[chapterName] = chapterObject;
+
+                    } else {
+
+                        Object.freeze(chapterObject);
+                        sectionObject[chapterName] = chapterObject;
+
+                    }
+
+                })
+
+            }
+        }
+    });
+    return itemsMap;
+}
+
+
+
+const loadAllChaptersMap = () => {
+    const allChaptersMap = {};
+    sidebarConfigObject.sections.forEach((section) => {
+        // Check if the section has content and if that content is of type 'chapters'
+        if (section.content && section.contentType === 'chapters') {
+            section.content.forEach((chapter) => {
+                allChaptersMap[chapter.chapterName] = chapter;
+            });
+        }
+    });
+    return allChaptersMap;
+};
+
+
+
+
+
+
+
+
+
+
+const getItemsMap = (section) => {
+    var map = {}
+    var sectionsWithChapters = sidebarConfigObject.sections.filter(section => section.contentType === 'chapters' && section.content);
+    sectionsWithChapters.forEach(section => {
+        var sectionMap = {}
+        section.content.forEach(chapter => {
+            var chapterMap = {}
+            chapter.content.forEach(item => {
+                chapterMap[item.itemName] = item;
+            })
+            sectionMap[chapter.chapterName] = chapterMap;
+        })
+        map[section.sectionName] = sectionMap;
+    });
+    return map;
+};
+
+const getSectionsMap = (onlyChapters) => {
+    var map = {}
+    var sectionsWithChapters = sidebarConfigObject.sections.filter(section => section.contentType === 'chapters' && section.content);
+
+    sectionsWithChapters.forEach(section => {
+        var sectionMap = {}
+        sectionMap.sectionName = section.sectionName;
+        sectionMap.contentType = section.contentType;
+
+        if (onlyChapters) {
+            if (section.contentType !== 'chapters') {
+                return;
+            }
+        }            
+        
+        if (section.contentType === 'chapters') {
+        
+            section.content.forEach(chapter => {
+                var chapterMap = {}
+                chapterMap.contentType = 'chapters';
+                chapterMap.ChapterName = chapter.chapterName;
+
+                chapter.content.forEach(item => {
+                    chapterMap.content[item.itemName] = item;
+                })
+
+                sectionMap.content[chapter.chapterName] = chapterMap;
+            
+            });
+
+        } else {
+            section.content = section.content;
+        }
+        
+        map.content[section.sectionName] = sectionMap;
+    
+    });
+
+    return map;
+}

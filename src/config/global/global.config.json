@@ -1,0 +1,48 @@
+{
+    "data": {
+        "landingPageProject": {
+            "firebase": {
+                "collections": {
+                    "hours": {
+                        "structure": {
+                            "permissions": {
+                                "permissions": {
+                                    "code": "string"
+                                }
+                            },
+                            "Compounds": {
+                                "compoundsList": {
+                                    "example": {
+                                        "id": "string",
+                                        "name": "string",
+                                        "hours": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "contacts": {
+                        "structure": {
+                            "Config": {
+                                "permissions": {
+                                    "permissions": {
+                                        "code": "string"
+                                    }
+                                }
+                            },
+                            "Departments": {
+                                "departmentList": {
+                                    "example": {
+                                        "fullname": "string",
+                                        "rule": "string",
+                                        "phoneName": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

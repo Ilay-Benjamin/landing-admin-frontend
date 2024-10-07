@@ -1,0 +1,457 @@
+
+class Placeholder {
+     constructor() {}
+}
+
+
+
+const blank = new Placeholder();
+
+
+
+class StateModelSettings {
+     static Settings = class {
+          static IS_DISABLED = "isDisabled";
+          static IS_LOADED = "isLoaded";
+          static IS_FOCUSED = "isFocused";
+     }
+     constructor() {
+          this._isDisabled = true;
+          this._isLoaded = false;
+          this._isFocused = false;
+     }
+     get isDisabled() {
+          return this._isDisabled;
+     }
+     set isDisabled(value) {
+          this._isDisabled = value;
+     }
+     get isLoaded() {
+          return this._isLoaded;
+     }
+     set isLoaded(value) {
+          this._isLoaded = value;
+     }
+     get isFocused() {
+          return this._isFocused;
+     }
+     set isFocused(value) {
+          this._isFocused = value;
+     }
+     clone() {
+          var settings = new StateModelSettings();
+          settings.isDisabled = this._isDisabled;
+          settings.isLoaded = this._isLoaded;
+          settings.isFocused = this._isFocused;
+          return settings;
+     }
+     equals(settings) {
+          return this._isDisabled === settings.isDisabled && this._isLoaded === settings.isLoaded && this._isFocused === settings.isFocused;
+     }
+     set(dataField, value) {
+          switch (dataField) {
+               case StateModelSettings.Settings.IS_DISABLED:
+                    try {
+                         if (typeof value !== "boolean") {
+                              throw new Error("Error! \nThe given value is not a boolean, it is: " + typeof value);
+                         }
+                         this.isDisabled = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelSettings.Settings.IS_LOADED:
+                    try {
+                         if (typeof value !== "boolean") {
+                              throw new Error("Error! \nThe given value is not a boolean, it is: " + typeof value);
+                         }
+                         this.isLoaded = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelSettings.Settings.IS_FOCUSED:
+                    try {
+                         if (typeof value !== "boolean") {
+                              throw new Error("Error! \nThe given value is not a boolean, it is: " + typeof value);
+                         }
+                         this.isFocused = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               default:
+                    console.error("Error! \nInvalid data field: " + dataField);
+                    break;
+          }
+     }
+}
+
+
+
+class StateModelEdit {
+     static Edit = class {
+          static TO_APPEND = "toAppend";
+          static HAS_CHANGES = "hasChanges";
+          static CHANGES = "changes";
+          static ORIGIN = "origin";
+     }
+     constructor() {
+          this._toAppend = false;
+          this._hasChanges = false;
+          this._changes = null;
+          this._origin = {
+               item: null,
+               ids: {
+                    departmentId: "",
+                    itemId: ""
+               }
+          };
+     }
+     get toAppend() {
+          return this._toAppend;
+     }
+     set toAppend(value) {
+          this._toAppend = value;
+     }
+     get hasChanges() {
+          return this._hasChanges;
+     }
+     set hasChanges(value) {
+          this._hasChanges = value;
+     }
+     get changes() {
+          return this._changes;
+     }
+     set changes(value) {
+          try {
+               if (value !== null && !(value instanceof Item)) {
+                    throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value);
+               } else {
+                    this._changes = value;
+               }
+          } catch (e) {
+               console.error(e.message);
+               this._changes = null;
+          }
+     }
+     get origin() {
+          return this._origin;
+     }
+     setOrigin(item = null, departmentId = "", itemId = "") {
+          try {
+               if (item !== null && !(item instanceof Item)) {
+                    throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof item);
+               } else {
+                    this._origin.item = item;
+                    this._origin.ids.departmentId = departmentId;
+                    this._origin.ids.itemId = itemId;
+               }
+          } catch (e) {
+               console.error(e.message);
+               this._origin = {
+                    item: null,
+                    ids: {
+                         departmentId: "",
+                         itemId: ""
+                    }
+               };
+          }
+     }
+     clone() {
+          var edit = new StateModelEdit();
+          edit.toAppend = this._toAppend;
+          edit.hasChanges = this._hasChanges;
+          edit.changes = this._changes;
+          edit.origin = this._origin;
+          return edit;
+     }
+     equals(edit) {
+          return this._toAppend === edit.toAppend && this._hasChanges === edit.hasChanges && this._changes === edit.changes && this._origin === edit.origin;
+     }
+     set(dataField, value) {
+          switch (dataField) {
+               case StateModelEdit.Edit.TO_APPEND:
+                    try {
+                         if (typeof value !== "boolean") {
+                              throw new Error("Error! \nThe given value is not a boolean, it is: " + typeof value);
+                         }
+                         this.toAppend = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelEdit.Edit.HAS_CHANGES:
+                    try {
+                         if (typeof value !== "boolean") {
+                              throw new Error("Error! \nThe given value is not a boolean, it is: " + typeof value);
+                         }
+                         this.hasChanges = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelEdit.Edit.CHANGES:
+                    try {
+                         if (value !== null && !(value instanceof Item)) {
+                              throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value);
+                         }
+                         this.changes = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelEdit.Edit.ORIGIN:
+                    try {
+                         if (!(value instanceof Object) && value !== null) {
+                              throw new Error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+                         }
+                         if (!value.hasOwnProperty("item") || !value.hasOwnProperty("ids")) {
+                              throw new Error("Error! \nThe given value does not have the required properties: item, ids");
+                         }
+                         if (value.item !== null && !(value.item instanceof Item)) {
+                              throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value.item);
+                         }
+                         if (value.ids !== null && !(value.ids instanceof Object)) {
+                              throw new Error("Error! \nThe given ids is not an instance of Object (or null), it is: " + typeof value.ids);
+                         }
+                         if (value.ids.hasOwnProperty("departmentId") && value.ids.hasOwnProperty("itemId")) {
+                              this.setOrigin(value.item, value.ids.departmentId, value.ids.itemId);
+                         } 
+                         if (value.ids.departmentId === null || value.ids.itemId === null) {
+                              this.setOrigin(value.item, "", "");
+                         }
+                         this.setOrigin(value.item, value.ids.departmentId, value.ids.itemId);
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               default:
+                    console.error("Error! \nInvalid data field: " + dataField);
+                    break;
+          }
+     }
+}
+
+
+
+class StateModelFocus {
+     static Focus = class {
+          static ITEM = "item";
+          static IDS = "ids";
+          static INDEXES = "indexes";
+     }
+     constructor() {
+          this._item = null;
+          this._ids = {
+               departmentId: "",
+               itemId: ""
+          };
+          this._indexes = {
+               departmentIndex: -1,
+               itemIndex: -1
+          };
+     }
+     get item() {
+          return this._item;
+     }
+     set item(value) {
+          try {
+               if (value !== null && !(value instanceof Item)) {
+                    throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value);
+               } else {
+                    this._item = value;
+               }
+          } catch (e) {
+               console.error(e.message);
+               this._item = null;
+          }
+     }
+     get ids() {
+          return this._ids;
+     }
+     setIds(departmentId = "", itemId = "") {
+          this._ids.departmentId = departmentId;
+          this._ids.itemId = itemId;
+     }
+     get indexes() {
+          return this._indexes;
+     }
+     setIndexes(departmentIndex = -1, itemIndex = -1) {
+          this._indexes.departmentIndex = departmentIndex;
+          this._indexes.itemIndex = itemIndex;
+     }
+     clone() {
+          var focus = new StateModelFocus();
+          focus.item = this._item;
+          focus.ids = this._ids;
+          focus.indexes = this._indexes;
+          return focus;
+     }
+     equals(focus) {
+          return this._item === focus.item && this._ids === focus.ids && this._indexes === focus.indexes;
+     }
+     set(dataField, value) {
+          switch (dataField) {
+               case StateModelFocus.Focus.ITEM:
+                    try {
+                         if (value !== null && !(value instanceof Item)) {
+                              throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof value);
+                         }
+                         this.item = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelFocus.Focus.IDS:
+                    try {
+                         if (!(value instanceof Object) && value !== null) {
+                              throw new Error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+                         }
+                         if (value.hasOwnProperty("departmentId") && value.hasOwnProperty("itemId")) {
+                              this.setIds(value.departmentId, value.itemId);
+                         } else {
+                              throw new Error("Error! \nThe given value does not have the required properties: departmentId, itemId");
+                         }
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               case StateModelFocus.Focus.INDEXES:
+                    try {
+                         if (!(value instanceof Object) && value !== null) {
+                              throw new Error("Error! \nThe given value is not an instance of Object, it is: " + typeof value);
+                         }
+                         if (value.hasOwnProperty("departmentIndex") && value.hasOwnProperty("itemIndex")) {
+                              this.setIndexes(value.departmentIndex, value.itemIndex);
+                         } else {
+                              throw new Error("Error! \nThe given value does not have the required properties: departmentIndex, itemIndex");
+                         }
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               default:
+                    console.error("Error! \nInvalid data field: " + dataField);
+                    break;
+          }
+     }
+}
+
+
+
+class StateModelData {
+     static Data = class {
+          static DEPARTMENTS = "departments";
+     }
+     constructor() {
+          this._departments = [];
+     }
+     get departments() {
+          return this._departments;
+     }
+     set departments(value) {
+          try {
+               if (value !== null && !(value instanceof Array)) {
+                    throw new Error("Error! \nThe given value is not an instance of Array (or null), it is: " + typeof value);
+               }
+               if (value.some(department => !(department instanceof Department))) {
+                    throw new Error("Error! \nThe given array contains elements that are not instances of Department");
+               } 
+               this._departments = value;
+          } catch (e) {
+               console.error(e.message);
+               this._departments = [];
+          }
+     }
+     clone() {
+          var data = new StateModelData();
+          data.departments = this._departments;
+          return data;
+     }
+     equals(data) {
+          return this._departments === data.departments;
+     }
+     set(dataField, value) {
+          switch (dataField) {
+               case StateModelData.Data.DEPARTMENTS:
+                    try {
+                         if (value !== null && !(value instanceof Array)) {
+                              throw new Error("Error! \nThe given value is not an instance of Array (or null), it is: " + typeof value);
+                         }
+                         if (value.some(department => !(department instanceof Department))) {
+                              throw new Error("Error! \nThe given array contains elements that are not instances of Department");
+                         }
+                         this.departments = value;
+                    } catch (e) {
+                         console.error(e.message);
+                    }
+                    break;
+               default:
+                    console.error("Error! \nInvalid data field: " + dataField);
+                    break;
+          }
+     }
+}
+
+
+
+
+
+
+
+
+import Item from '../Item';
+import Department from '../Department';
+import { StateModel } from './EditorStateModelCore';
+
+
+
+
+
+
+export class EditorStateModel {
+
+     constructor(itemInstance, departmentId, settings) {
+          try {
+               if (itemInstance !== null && !(itemInstance instanceof Item) ) {
+                    throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof itemInstance);
+               }
+               this._item = new Item(itemInstance);
+          } catch (e) {
+               console.error(e.message);
+               this._item = null;
+          }
+     }
+
+     get item() {
+          return this._item;
+     }
+
+     set item(newItem) {
+          if (newItem !== null && !(newItem instanceof Item)) {
+               throw new Error("Error! \nThe given item is not an instance of Item (or null), it is: " + typeof newItem);
+          }
+          this._item = new Item(newItem);
+     }
+
+     clone() {
+     }
+
+     equals(changesState) {
+          if (this._item === null && changesState.item === null) {
+               return true;
+          }
+          if (this._item === null || changesState.item === null) {
+               return false;
+          }
+          return this._item.equals(changesState.item);
+     }
+
+     isNull() {
+          return this._item === null;
+     }
+
+}
+
+

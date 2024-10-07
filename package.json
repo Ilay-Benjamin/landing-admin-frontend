@@ -1,4 +1,5 @@
 {
+  "homepage": "/src/pages/Home/index.Home.js",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,

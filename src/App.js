@@ -10,6 +10,7 @@ import { appDetails, appPages} from './config/app/app.config.js';
 
 
 
+
 const pagesArray = appPages.pages;
 
 const PagesProps = {

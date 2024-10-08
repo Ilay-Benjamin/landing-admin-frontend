@@ -2,10 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc, getDoc, updateDoc, query, where, getDocs } from 'firebase/firestore';
 import { databaseCollections } from '../config/global/global.config';
 import { establishConnection } from '../services/Firebase/connection';
-// Initialize Firebase app and Firestore
-
-
-
+// Initialize Firebase app and Firestorebdb
 
 
 export async function saveNewContact(contactItem, departmentName) {

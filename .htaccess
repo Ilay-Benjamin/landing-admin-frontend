@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^.*$ https://www.google.com [R=302,L]

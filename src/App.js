@@ -11,6 +11,7 @@ import { appDetails, appPages} from './config/app/app.config.js';
 
 //aedgt 
 //bb king
+// YES YOU RIGHT
 
 const pagesArray = appPages.pages;
 

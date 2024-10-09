@@ -12,12 +12,11 @@ import { appDetails, appPages} from './config/app/app.config.js';
 //aedgt 
 //bb king
 // YES YOU RIGHT
-// MY FRIEND
+// MY FRIEND !!!!!!!!
 
 const pagesArray = appPages.pages;
 
-const PagesProps = {
-  Home: {
+const PagesProps = {rwefgvdvfgdc 
     name: 'Yoav Ismah',
     age: 21
   },

@@ -24,7 +24,7 @@
     "main.0180aa6a.js.map": "../build/static/js/main.0180aa6a.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0416c5f.css",
-    "static/js/main.0180aa6a.js"
+    "../build/static//css/main.c0416c5f.css",
+    "../build/static//js/main.0180aa6a.js"
   ]
 }

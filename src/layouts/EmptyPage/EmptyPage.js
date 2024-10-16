@@ -3,7 +3,7 @@ import { Route, Routes, BrowserRouter, Link, Outlet, Redirect } from 'react-rout
 import { appDetails, appPages } from '../../config/app/app.config.js';
 import classNames from 'classnames';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import Header from '../../components/Header';
+import Header from '../../components/Header.js';
 
 import '../../assets/css/layouts/EmptyPage/EmptyPage.css';
 

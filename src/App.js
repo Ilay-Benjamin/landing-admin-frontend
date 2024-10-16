@@ -9,7 +9,7 @@ import { sidebarConfig } from './config/app/UI/sidebar/sidebar.config.js';
 import { appDetails, appPages} from './config/app/app.config.js';
 
 
-//aedgt 
+//aedgt C:\Users\ilayb\Develop\Storage\Programming\Codes\Projects\ilayb\Associated\hativatyoav\domains\webserver.hativatyoav-server.site\src\client\src\App.js
 //bb king
 // YES YOU RIGHT
 // MY FRIEND

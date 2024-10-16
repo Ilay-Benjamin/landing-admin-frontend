@@ -4,30 +4,42 @@
   "main": "index.js",
   "homepage": "./",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "node ./scripts/postbuild.js"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@remix-run/router": "^1.20.0",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
-    "create-react-app": "^1.5.2",
+    "create-react-app": "^1.2.1",
     "express": "^4.21.1",
     "jquery": "^3.7.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
-    "react-scripts": "^3.4.4",
-    "replace-in-file": "^8.2.0"
+    "react-scripts": "^5.0.1",
+    "replace-in-file": "^8.2.0",
+    "webpack": "^5.95.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.7.5",
-    "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

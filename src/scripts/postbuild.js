@@ -1,4 +1,5 @@
-const replace = require('replace-in-file');
+import replace from 'replace-in-file';
+
 
 // Define the options for the replacement
 const options = {
